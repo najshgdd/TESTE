@@ -8,12 +8,16 @@ $clientIp = $_SERVER['REMOTE_ADDR'];
 
 // Créer le dossier sessions s'il n'existe pas
 if (!file_exists('sessions')) {
-    mkdir('sessions', 0777, true);
+    if (!mkdir('sessions', 0777, true)) {
+        die('Failed to create sessions directory');
+    }
 }
 
 // Créer le dossier tracking s'il n'existe pas
 if (!file_exists('tracking')) {
-    mkdir('tracking', 0777, true);
+    if (!mkdir('tracking', 0777, true)) {
+        die('Failed to create tracking directory');
+    }
 }
 
 // Enregistrer l'IP et la page actuelle
